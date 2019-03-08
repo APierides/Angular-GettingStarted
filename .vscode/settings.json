@@ -6,5 +6,7 @@
         "**/*.js": true,
         "**/*.map": true
 	},
-	"files.autoSave": "afterDelay"
+	"files.autoSave": "afterDelay",
+	"git.autofetch": true,
+	"editor.formatOnSave": true
 }
