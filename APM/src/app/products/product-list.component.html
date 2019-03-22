@@ -33,19 +33,19 @@
         <tbody>
           <tr *ngFor="let product of products">
             <td>
-            <img [src] ='product.imageUrl' [title] = 'product.productName' [style.width.px]='imageWidth'   [style.margin.px]='imageMargin'  *ngIf = 'showImage'/>
+            <img [src] ='product.imageUrl' [title] = 'product.productName | uppercase' [style.width.px]='imageWidth'   [style.margin.px]='imageMargin'  *ngIf = 'showImage'/>
             </td>
             <td>
               {{product.productName}}
             </td>
             <td>
-              {{product.productCode}}
+              {{product.productCode | lowercase}}
             </td>
             <td>
               {{product.releaseDate}}
             </td>
             <td>
-              {{product.price}}
+              {{product.price | currency : 'USD' : true :'1.2-2'}}
             </td>
             <td>
               {{product.starRating}}
