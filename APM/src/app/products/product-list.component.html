@@ -6,7 +6,7 @@
     <div class='row'>
       <div class='col-md-2'>Filter by:</div>
       <div class='col-md-4'>
-        <input type='text'  [(ngModel)] = 'listFilter' />
+        <input type='text' [(ngModel)]='listFilter' />
       </div>
     </div>
     <div class='row' *ngIf='listFilter'>
@@ -19,7 +19,7 @@
         <thead>
           <tr>
             <th>
-              <button (click) = 'toggleImage()' class='btn btn-primary'>
+              <button (click)='toggleImage()' class='btn btn-primary'>
                 {{showImage ?  'Hide Image' : 'Show Image'}}
               </button>
             </th>
@@ -33,10 +33,11 @@
         <tbody>
           <tr *ngFor="let product of filteredProducts">
             <td>
-            <img [src] ='product.imageUrl' [title] = 'product.productName | uppercase' [style.width.px]='imageWidth'   [style.margin.px]='imageMargin'  *ngIf = 'showImage'/>
+              <img [src]='product.imageUrl' [title]='product.productName | uppercase' [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin' *ngIf='showImage' />
             </td>
             <td>
-              {{product.productName}}
+              <a [routerLink]="['/products',product.productId]">{{product.productName}}</a>
             </td>
             <td>
               {{product.productCode | lowercase | convertToSpaces: '-'}}
@@ -48,7 +49,7 @@
               {{product.price | currency : 'AUD' : 'symbol-narrow' :'1.2-2'}}
             </td>
             <td>
-            <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
+              <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
             </td>
           </tr>
         </tbody>
